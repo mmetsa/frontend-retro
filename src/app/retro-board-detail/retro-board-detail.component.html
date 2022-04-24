@@ -1,0 +1,9 @@
+<div class="header">
+  <img class="title" src="assets/retrospective-logo.png" alt="retrospective logo">
+</div>
+<div class="retro-board-area">
+  <div *ngFor="let column of board?.columns" [classList]="'retro-board-column col-' + columnWidth">
+    <p class="column-title">{{column.name}}</p>
+  </div>
+</div>
+<p>retro-board-detail works! {{id}}</p>

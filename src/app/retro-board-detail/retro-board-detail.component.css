@@ -1,0 +1,16 @@
+.retro-board-area {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.retro-board-column {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.column-title {
+  font-weight: bold;
+  font-family: "Segoe UI", serif;
+}

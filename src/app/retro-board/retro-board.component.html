@@ -1,0 +1,34 @@
+<div class="header">
+  <img class="title" src="assets/retrospective-logo.png" alt="retrospective logo">
+</div>
+<div class="retro-options">
+  <div class="retro-options-item col-6" (click)="toggleJoinActive()">
+    <p class="col-6 retro-options-item-text">Join a retrospective board</p>
+    <i class="retro-item-selected"></i>
+  </div>
+  <mat-card class="col-5" *ngIf="joinActive">
+    <mat-card-title>Join a board in 2 simple steps</mat-card-title>
+    <mat-card-subtitle>It's that easy...</mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field class="join-board-input">
+        <mat-label>Enter your name</mat-label>
+        <input matInput placeholder="Your name" type="text" aria-label="Text" [formControl]="username">
+      </mat-form-field>
+      <mat-form-field class="join-board-input">
+        <mat-label>Enter Retro board ID</mat-label>
+        <input matInput placeholder="Retro board ID" type="number" aria-label="Number" [formControl]="boardId">
+      </mat-form-field>
+      <button mat-button (click)="joinBoard()">Join</button>
+    </mat-card-content>
+  </mat-card>
+  <p class="option-text">or ...</p>
+  <div class="retro-options-item col-6">
+    <p class="col-6 retro-options-item-text">Create a new retro board</p>
+    <i class="retro-item-selected"></i>
+  </div>
+  <p class="option-text">or ...</p>
+  <div class="retro-options-item col-6">
+    <p class="col-6 retro-options-item-text">See old retrospective boards</p>
+    <i class="retro-item-selected"></i>
+  </div>
+</div>
