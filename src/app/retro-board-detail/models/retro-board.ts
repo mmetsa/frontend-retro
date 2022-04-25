@@ -5,7 +5,7 @@ export interface RetroBoard {
   name: string;
   teamName: string;
   expirationDate: Date;
-  isActive: boolean;
+  active: boolean;
   retroDate: Date;
   columns: BoardColumn[];
 

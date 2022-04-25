@@ -1,7 +1,8 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs";
-import {RetroBoard} from "./models/retro-board";
+import {RetroBoard} from "../retro-board-detail/models/retro-board";
+import {CreateBoard} from "./models/create-board";
 
 
 @Injectable()
@@ -14,4 +15,8 @@ export class RetroBoardApiService {
       .pipe(map((data: RetroBoard) => data));
   }
 
+  createBoard(board: CreateBoard) {
+    return this.http.post<number>('http://localhost:8080/api/v1/retro/create', board)
+      .pipe(map((data: number) => data));
+  }
 }

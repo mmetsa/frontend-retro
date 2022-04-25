@@ -1,6 +1,6 @@
-<div class="header">
+<a routerLink="/" class="header">
   <img class="title" src="assets/retrospective-logo.png" alt="retrospective logo">
-</div>
+</a>
 <div class="retro-options">
   <div class="retro-options-item col-6" (click)="toggleJoinActive()">
     <p class="col-6 retro-options-item-text">Join a retrospective board</p>
@@ -22,12 +22,47 @@
     </mat-card-content>
   </mat-card>
   <p class="option-text">or ...</p>
-  <div class="retro-options-item col-6">
+  <div class="retro-options-item col-6" (click)="toggleCreateActive()">
     <p class="col-6 retro-options-item-text">Create a new retro board</p>
     <i class="retro-item-selected"></i>
   </div>
+  <mat-card class="col-5" *ngIf="createActive">
+    <mat-card-title>Create a new Retro board</mat-card-title>
+    <mat-card-subtitle>It's simple...</mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field class="join-board-input">
+        <mat-label>Enter your name</mat-label>
+        <input matInput placeholder="Your name" type="text" aria-label="Text" [formControl]="username">
+      </mat-form-field>
+      <mat-form-field class="join-board-input">
+        <mat-label>Enter Board name</mat-label>
+        <input matInput placeholder="Board name" type="text" aria-label="Text" [formControl]="boardName">
+      </mat-form-field>
+      <mat-form-field class="join-board-input">
+        <mat-label>Enter Team name</mat-label>
+        <input matInput placeholder="Team name" type="text" aria-label="Text" [formControl]="teamName">
+      </mat-form-field>
+      <mat-form-field class="create-board-columns join-board-input">
+        <mat-label>Board columns</mat-label>
+        <mat-chip-list #chipList aria-label="Board columns">
+          <mat-chip *ngFor="let column of columns" (removed)="removeColumn(column)">
+            {{column}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input placeholder="New column"
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="true"
+                 (matChipInputTokenEnd)="addColumn($event)">
+        </mat-chip-list>
+      </mat-form-field>
+      <button mat-button (click)="createBoard()">Create</button>
+    </mat-card-content>
+  </mat-card>
   <p class="option-text">or ...</p>
-  <div class="retro-options-item col-6">
+  <div (click)="navigateToList()" class="retro-options-item col-6">
     <p class="col-6 retro-options-item-text">See old retrospective boards</p>
     <i class="retro-item-selected"></i>
   </div>

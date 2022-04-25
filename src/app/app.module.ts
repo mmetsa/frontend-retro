@@ -13,18 +13,29 @@ import { RetroBoardDetailComponent } from './retro-board-detail/retro-board-deta
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {RouterModule, Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
-import {RetroBoardApiService} from "./retro-board-detail/retro-board-api.service";
+import {RetroBoardApiService} from "./retro-board/retro-board-api.service";
+import {MatDividerModule} from "@angular/material/divider";
+import {RetroBoardDetailApiService} from "./retro-board-detail/retro-board-detail-api.service";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table";
+import { RetroTableComponent } from './retro-table/retro-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {RetroTableApiService} from "./retro-table/retro-table-api.service";
 
 const appRoutes: Routes = [
   { path: '', component: RetroBoardComponent},
-  { path: 'retro/:id', component: RetroBoardDetailComponent}
+  { path: 'retro/:id', component: RetroBoardDetailComponent},
+  { path: 'list', component: RetroTableComponent }
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     RetroBoardComponent,
-    RetroBoardDetailComponent
+    RetroBoardDetailComponent,
+    RetroTableComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +48,15 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    MatDividerModule,
+    MatChipsModule,
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
-  providers: [RetroBoardApiService],
+  providers: [RetroBoardApiService, RetroBoardDetailApiService, RetroTableApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

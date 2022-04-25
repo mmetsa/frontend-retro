@@ -5,12 +5,60 @@
 }
 
 .retro-board-column {
+  background: rgb(255,102,0);
+  background: linear-gradient(0deg, rgba(255,102,0,1) 35%, rgba(255,209,178,1) 100%);
+  margin-left: 10px;
+  margin-right: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: stretch;
 }
 
 .column-title {
   font-weight: bold;
   font-family: "Segoe UI", serif;
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+}
+
+.column-add {
+  display: flex;
+  justify-content: space-around;
+}
+
+.mat-card-title {
+  font-size: medium;
+}
+
+.column-item {
+  margin: 10px;
+}
+
+.matInput, .mat-flat-button {
+  background-color: aliceblue;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.column-content {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.column-content-icon {
+  cursor: pointer;
+}
+
+.retro-board-title {
+  font-weight: bold;
+  font-size: xx-large;
+  margin-bottom: 5%;
+}
+
+.retro-board-title-warn {
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 2%;
+  color: red;
 }

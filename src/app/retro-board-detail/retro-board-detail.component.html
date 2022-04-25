@@ -1,9 +1,32 @@
-<div class="header">
+<a routerLink="/" class="header">
   <img class="title" src="assets/retrospective-logo.png" alt="retrospective logo">
+</a>
+<div class="retro-board-area">
+  <p class="retro-board-title">{{board?.name}} - {{board?.retroDate}} - {{board?.teamName}} Team Retro</p>
+</div>
+<div class="retro-board-area" *ngIf="!board?.active">
+  <p class="retro-board-title-warn">Board is inactive</p>
 </div>
 <div class="retro-board-area">
-  <div *ngFor="let column of board?.columns" [classList]="'retro-board-column col-' + columnWidth">
+  <div [formGroup]="textareas" *ngFor="let column of board?.columns; let i = index" [classList]="'retro-board-column col-' + columnWidth">
     <p class="column-title">{{column.name}}</p>
+    <mat-divider></mat-divider>
+    <div *ngFor="let item of column.items" class="column-item col-11">
+      <mat-card>
+        <mat-card-title>
+          {{item.value}}
+        </mat-card-title>
+        <mat-card-subtitle>{{item.author}}</mat-card-subtitle>
+        <mat-card-content class="column-content">
+          <p class="column-content-icon" (click)="addUpVote(item.id)">👍 {{item.upVotes ?? 0}}</p>
+          <p class="column-content-icon" (click)="addDownVote(item.id)">👎 {{item.downVotes ?? 0}}</p>
+          <p class="column-content-icon" (click)="deleteColumnItem(item.id)" *ngIf="username === item.author">❌</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="column-add col-12" *ngIf="board?.active">
+      <textarea [formControlName]="column.name" class="matInput col-9" matInput placeholder="Type something..."></textarea>
+      <button mat-flat-button (click)="addColumnItem(column.id, column.name)">Add</button>
+    </div>
   </div>
 </div>
-<p>retro-board-detail works! {{id}}</p>
