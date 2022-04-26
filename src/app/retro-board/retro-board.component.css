@@ -1,38 +1,3 @@
-.retro-options {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.retro-options-item {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  background: rgb(255,102,0);
-  background: linear-gradient(0deg, rgba(255,102,0,1) 35%, rgba(255,209,178,1) 100%);
-  border: 1px solid black;
-  height: 100px;
-  border-radius: 10px;
-  font-family: "Segoe UI", serif;
-  font-size: xx-large;
-}
-
-.retro-options-item-text {
-  padding-left: 10px;
-}
-
-.retro-options-item:hover > .retro-item-selected {
-  opacity: 1;
-  margin-left: 40%;
-}
-
-.option-text {
-  color: grey;
-}
-
 .join-board-input {
   padding-right: 50px;
 }
@@ -41,12 +6,72 @@
   width: 100%;
 }
 
-.retro-item-selected {
-  border: solid black;
-  border-width: 0 3px 3px 0;
+.main-area {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1em auto auto;
+  justify-content: space-evenly;
+  transition: transform ease 0.6s;
+}
+
+.main-area-moved {
+  transform: translate(0, -20em);
+}
+
+.main-button {
+  width: 12em;
+  height: 12em;
+  background-color: rgb(255,102,0);
+  border-radius: 50%;
+  display: flex;
+  transition: all 0.5s ease-in-out;
+}
+
+.main-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.button-icon {
+  margin: auto;
+  transform: scale(3);
+}
+
+.flex-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-row-button {
+  margin-top: 1.5em;
+  margin-bottom: 3em;
+}
+
+.tooltip {
+  transform: rotate(45deg);
+}
+
+.tooltip-text {
   display: inline-block;
+  position: relative;
+  top: -5.2em;
+  font-family: Cambria, serif;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
+}
+
+.tooltip-item {
   opacity: 0;
-  padding: 12px;
-  transform: rotate(-45deg);
-  transition: opacity 1s, margin-left 1s;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.visible-tooltip {
+  opacity: 1;
+}
+
+.retro-table {
+  margin-top: 3em;
+  width: 90%;
 }

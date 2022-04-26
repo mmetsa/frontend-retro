@@ -1,32 +1,29 @@
 <a routerLink="/" class="header">
   <img class="title" src="assets/retrospective-logo.png" alt="retrospective logo">
 </a>
-<div class="retro-options">
-  <div class="retro-options-item col-6" (click)="toggleJoinActive()">
-    <p class="col-6 retro-options-item-text">Join a retrospective board</p>
-    <i class="retro-item-selected"></i>
+<div class="main-area col-8" [class.main-area-moved]="clickedJoin || clickedCreate || clickedList">
+  <div class="flex-row">
+    <img class="tooltip tooltip-item" [class.visible-tooltip]="createActive && (!clickedCreate && !clickedJoin && !clickedList)" src="./assets/chat-svg-tooltip.svg" width="200em" height="200em"/>
+    <img class="tooltip tooltip-item" [class.visible-tooltip]="joinActive && (!clickedCreate && !clickedJoin && !clickedList)" src="./assets/chat-svg-tooltip.svg" width="200em" height="200em"/>
+    <img class="tooltip tooltip-item" [class.visible-tooltip]="listActive && (!clickedCreate && !clickedJoin && !clickedList)" src="./assets/chat-svg-tooltip.svg" width="200em" height="200em"/>
   </div>
-  <mat-card class="col-5" *ngIf="joinActive">
-    <mat-card-title>Join a board in 2 simple steps</mat-card-title>
-    <mat-card-subtitle>It's that easy...</mat-card-subtitle>
-    <mat-card-content>
-      <mat-form-field class="join-board-input">
-        <mat-label>Enter your name</mat-label>
-        <input matInput placeholder="Your name" type="text" aria-label="Text" [formControl]="username">
-      </mat-form-field>
-      <mat-form-field class="join-board-input">
-        <mat-label>Enter Retro board ID</mat-label>
-        <input matInput placeholder="Retro board ID" type="number" aria-label="Number" [formControl]="boardId">
-      </mat-form-field>
-      <button mat-button (click)="joinBoard()">Join</button>
-    </mat-card-content>
-  </mat-card>
-  <p class="option-text">or ...</p>
-  <div class="retro-options-item col-6" (click)="toggleCreateActive()">
-    <p class="col-6 retro-options-item-text">Create a new retro board</p>
-    <i class="retro-item-selected"></i>
+  <div class="flex-row flex-row-tooltip">
+    <p class="tooltip-text tooltip-item" [class.visible-tooltip]="createActive && (!clickedCreate && !clickedJoin && !clickedList)">Create a new <br>Retro board</p>
+    <p class="tooltip-text tooltip-item" [class.visible-tooltip]="joinActive && (!clickedCreate && !clickedJoin && !clickedList)" >Join a <br> Retro Board</p>
+    <p class="tooltip-text tooltip-item" [class.visible-tooltip]="listActive && (!clickedCreate && !clickedJoin && !clickedList)" >View previous <br> boards</p>
   </div>
-  <mat-card class="col-5" *ngIf="createActive">
+  <div class="flex-row flex-row-button">
+    <div class="main-button" (mouseenter)="toggleCreateActive()" (mouseleave)="toggleCreateActive()" (click)="toggleClickedCreate()">
+      <mat-icon class="button-icon">chrome_reader_mode</mat-icon>
+    </div>
+    <div class="main-button" (mouseenter)="toggleJoinActive()" (mouseleave)="toggleJoinActive()" (click)="toggleClickedJoin()">
+      <mat-icon class="button-icon">people_outline</mat-icon>
+    </div>
+    <div class="main-button" (mouseenter)="toggleListActive()" (mouseleave)="toggleListActive()"(click)="toggleClickedList()">
+      <mat-icon class="button-icon">list</mat-icon>
+    </div>
+  </div>
+  <mat-card class="col-6" *ngIf="clickedCreate">
     <mat-card-title>Create a new Retro board</mat-card-title>
     <mat-card-subtitle>It's simple...</mat-card-subtitle>
     <mat-card-content>
@@ -61,9 +58,20 @@
       <button mat-button (click)="createBoard()">Create</button>
     </mat-card-content>
   </mat-card>
-  <p class="option-text">or ...</p>
-  <div (click)="navigateToList()" class="retro-options-item col-6">
-    <p class="col-6 retro-options-item-text">See old retrospective boards</p>
-    <i class="retro-item-selected"></i>
-  </div>
+  <mat-card class="join-card col-6" *ngIf="clickedJoin">
+    <mat-card-title>Join a board in 2 simple steps</mat-card-title>
+    <mat-card-subtitle>It's that easy...</mat-card-subtitle>
+    <mat-card-content>
+      <mat-form-field class="join-board-input">
+        <mat-label>Enter your name</mat-label>
+        <input matInput placeholder="Your name" type="text" aria-label="Text" [formControl]="username">
+      </mat-form-field>
+      <mat-form-field class="join-board-input">
+        <mat-label>Enter Retro board ID</mat-label>
+        <input matInput placeholder="Retro board ID" type="number" aria-label="Number" [formControl]="boardId">
+      </mat-form-field>
+      <button mat-button (click)="joinBoard()">Join</button>
+    </mat-card-content>
+  </mat-card>
+  <app-retro-table class="retro-table" *ngIf="clickedList"></app-retro-table>
 </div>

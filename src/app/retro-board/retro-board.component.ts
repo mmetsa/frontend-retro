@@ -14,6 +14,10 @@ export class RetroBoardComponent implements OnInit {
 
   joinActive: boolean = false;
   createActive: boolean = false;
+  listActive: boolean = false;
+  clickedCreate: boolean = false;
+  clickedJoin: boolean = false;
+  clickedList: boolean = false;
   username = new FormControl(localStorage.getItem('username'), [Validators.required, Validators.minLength(1)]);
   boardId = new FormControl(undefined, [Validators.required, Validators.min(1)]);
   boardName = new FormControl('', Validators.required);
@@ -47,6 +51,28 @@ export class RetroBoardComponent implements OnInit {
 
   toggleCreateActive(): void {
     this.createActive = !this.createActive;
+  }
+
+  toggleListActive(): void {
+    this.listActive = !this.listActive;
+  }
+
+  toggleClickedCreate(): void {
+    this.clickedJoin = false;
+    this.clickedList = false;
+    this.clickedCreate = !this.clickedCreate;
+  }
+
+  toggleClickedJoin(): void {
+    this.clickedCreate = false;
+    this.clickedList = false;
+    this.clickedJoin = !this.clickedJoin;
+  }
+
+  toggleClickedList(): void {
+    this.clickedCreate = false;
+    this.clickedJoin = false;
+    this.clickedList = !this.clickedList;
   }
 
   joinBoard(): void {
