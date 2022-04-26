@@ -12,7 +12,7 @@
     <p class="tooltip-text tooltip-item" [class.visible-tooltip]="joinActive && (!clickedCreate && !clickedJoin && !clickedList)" >Join a <br> Retro Board</p>
     <p class="tooltip-text tooltip-item" [class.visible-tooltip]="listActive && (!clickedCreate && !clickedJoin && !clickedList)" >View previous <br> boards</p>
   </div>
-  <div class="flex-row flex-row-button">
+  <div class="flex-row flex-row-button" [class.flex-row-button-clicked]="clickedCreate || clickedJoin || clickedList">
     <div class="main-button" (mouseenter)="toggleCreateActive()" (mouseleave)="toggleCreateActive()" (click)="toggleClickedCreate()">
       <mat-icon class="button-icon">chrome_reader_mode</mat-icon>
     </div>

@@ -11,20 +11,20 @@
   flex-wrap: wrap;
   margin: 1em auto auto;
   justify-content: space-evenly;
-  transition: transform ease 0.6s;
+  transition: transform ease-in-out 0.6s;
 }
 
 .main-area-moved {
-  transform: translate(0, -20em);
+  transform: translate(0, -30em);
 }
 
 .main-button {
-  width: 12em;
-  height: 12em;
+  width: 16em;
+  height: 16em;
   background-color: rgb(255,102,0);
   border-radius: 50%;
   display: flex;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease;
 }
 
 .main-button:hover {
@@ -34,7 +34,7 @@
 
 .button-icon {
   margin: auto;
-  transform: scale(3);
+  transform: scale(4);
 }
 
 .flex-row {
@@ -46,6 +46,11 @@
 .flex-row-button {
   margin-top: 1.5em;
   margin-bottom: 3em;
+  transition: all 0.5s ease-in-out;
+}
+
+.flex-row-button-clicked {
+  transform: scale(0.4);
 }
 
 .tooltip {
