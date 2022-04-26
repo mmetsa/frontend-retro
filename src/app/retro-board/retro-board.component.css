@@ -29,6 +29,7 @@
 
 .main-button:hover {
   cursor: pointer;
+  background-color: rgb(236, 129, 55);
   transform: scale(1.1);
 }
 
