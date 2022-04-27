@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {MatChipInputEvent, MatChipList} from "@angular/material/chips";
@@ -12,6 +12,7 @@ import {RetroBoardApiService} from "./retro-board-api.service";
 })
 export class RetroBoardComponent implements OnInit {
 
+  initialized: boolean = false;
   joinActive: boolean = false;
   createActive: boolean = false;
   listActive: boolean = false;
@@ -29,7 +30,6 @@ export class RetroBoardComponent implements OnInit {
 
   addColumn(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-    console.log("HERE")
     if (value) {
       this.columns.push(value);
     }
@@ -43,7 +43,11 @@ export class RetroBoardComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.initialized = true;
+    }, 500);
+  }
 
   toggleJoinActive(): void {
     this.joinActive = !this.joinActive;
