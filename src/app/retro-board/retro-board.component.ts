@@ -20,6 +20,7 @@ export class RetroBoardComponent implements OnInit {
   clickedJoin: boolean = false;
   clickedList: boolean = false;
   username = new FormControl(localStorage.getItem('username'), [Validators.required, Validators.minLength(1)]);
+  createUsername = new FormControl(localStorage.getItem('username'), [Validators.required, Validators.minLength(1)]);
   boardId = new FormControl(undefined, [Validators.required, Validators.min(1)]);
   boardName = new FormControl('', Validators.required);
   teamName = new FormControl('', Validators.required);
@@ -87,16 +88,13 @@ export class RetroBoardComponent implements OnInit {
   }
 
   createBoard() {
-    if (this.username.valid && this.boardName.valid && this.teamName.valid && this.columns.length > 0) {
+    if (this.createUsername.valid && this.boardName.valid && this.teamName.valid && this.columns.length > 0) {
+      localStorage.setItem('username', this.createUsername.value);
       this.apiService.createBoard({
         name: this.boardName.value,
         teamName: this.teamName.value,
         columns: this.columns
       }).subscribe((id: number) => this.router.navigate(['/retro', id]));
     }
-  }
-
-  navigateToList(): void {
-    this.router.navigate(['/list']);
   }
 }

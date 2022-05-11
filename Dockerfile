@@ -1,8 +1,8 @@
 FROM node:latest as node
-WORKDIR /app
+WORKDIR /frontend-retro
 COPY . .
 RUN npm install
-RUN npm run build --prod
+RUN npm run build
 
 FROM nginx:alpine
-COPY --from=node /app/dist/frontend-retro /usr/share/nginx/html
+COPY --from=node /frontend-retro/dist/frontend-retro /usr/share/nginx/html

@@ -23,6 +23,7 @@ import { RetroTableComponent } from './retro-table/retro-table.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {RetroTableApiService} from "./retro-table/retro-table-api.service";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 const appRoutes: Routes = [
   { path: '', component: RetroBoardComponent},
@@ -37,25 +38,26 @@ const appRoutes: Routes = [
     RetroBoardDetailComponent,
     RetroTableComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatAutocompleteModule,
-    MatInputModule,
-    MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule,
-    MatDividerModule,
-    MatChipsModule,
-    MatIconModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule
-  ],
+	imports: [
+		BrowserModule,
+		BrowserAnimationsModule,
+		MatCardModule,
+		MatFormFieldModule,
+		MatAutocompleteModule,
+		MatInputModule,
+		MatButtonModule,
+		FormsModule,
+		ReactiveFormsModule,
+		RouterModule.forRoot(appRoutes),
+		HttpClientModule,
+		MatDividerModule,
+		MatChipsModule,
+		MatIconModule,
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatButtonToggleModule
+	],
   providers: [RetroBoardApiService, RetroBoardDetailApiService, RetroTableApiService],
   bootstrap: [AppComponent]
 })
